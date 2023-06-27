@@ -44,12 +44,12 @@ const _mcduGetKey = (keyEvent) => {
   }
 
   // match mcdu function keys
-  return this.mcduFunctionalKeys[keyEvent.code];
+  return _mcduFunctionalKeys[keyEvent.code];
 };
 
 let _mcduKeyboardInput = (keyEvent) => {
   //console.log('event', { key: keyEvent.key, code: keyEvent.code });
-  const key = this.getMcduKey(keyEvent);
+  const key = _mcduGetKey(keyEvent);
 
   if (key) {
     keyEvent.preventDefault();
@@ -58,7 +58,7 @@ let _mcduKeyboardInput = (keyEvent) => {
     return;
   }
 
-  //console.log(`mcdu key: ${key}`);
+  console.log(`mcdu key: ${key}`);
 
   window._mcduSoc?.send(`event:left:${key}`);
 };
